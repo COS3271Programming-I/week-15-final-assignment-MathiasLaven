@@ -1,0 +1,41 @@
+package my_project.programs;
+import java.util.Scanner;
+
+public class Fibonacci {
+    static Scanner userinput = new Scanner(System.in);
+    public static void fibonacci() {
+    	
+    	System.out.println("This program generates entries in the Fibonacci Sequence.");
+    	System.out.print("How many entries do you want? \nPlease enter a number between 1 and 32. \n>>");
+    	int entries = userinput.nextInt();
+    	
+    	System.out.println("");
+    	
+    	//make sure it's in range
+    	if (entries <= 32 && entries >= 1) {
+    		
+        	//34 entries with a secret 0 at the beginning
+        	//so the first generated number has two numbers to work with
+        	int[] fibonacciSequence = new int [34];
+        	fibonacciSequence[0] = 0;
+        	fibonacciSequence[1] = 1;
+        	
+        	//starting the loop at 2 for the same reason
+        	//0 and 1 are already defined, no need to run through them
+        	for (int i = 2; i < entries+2; i++) {
+        		
+        		//print the previous number (to handle 1)
+            	System.out.println(fibonacciSequence[i-1]);
+        		
+            	//create a new number
+            	//because this is after the print, will create 1 more entry than displayed
+            	//but the code was much simpler this way in my opinion
+            	fibonacciSequence[i] = fibonacciSequence[i-2] + fibonacciSequence[i-1];
+        	}
+    	} else {
+        	System.out.println("Your entry number is out of bounds. Try again with a number no less than 1 and no greater than 32.");
+    	}
+    	
+
+	}
+}

@@ -1,0 +1,86 @@
+package my_project.programs;
+import java.util.Scanner;
+
+public class DoubleFactorial {
+	static Scanner userinput = new Scanner(System.in);
+	public static void doubleFactorial() {  
+		System.out.println("Welcome to the Double Factorial Calculator!");
+		System.out.println("");
+		
+		//input
+		//IMPORTANT NOTE: this is one thing i changed for the ultimate computer
+		//it previously did not tell you (1-19), you had to find that out the hard way
+		//small but better for the user experience
+		int enteredNumber = promptInt("Enter an integer (1-19) to calculate the double factorial of.");
+		System.out.println("");
+		
+		//enforces integer size
+		//i'm supposed to have an error trapping method as well, 
+		//but that's covered by my user input helper function
+		if (enteredNumber > 19) {
+			System.out.println("Error: integer too large. Please enter an integer smaller than 20.");
+			return;
+		} else if (enteredNumber < 0) {
+			System.out.println("Error: integer too small. Please enter an integer greater than 0.");
+			return;
+		}
+		
+		//calculate and display result
+		int factorialResult = doubleFactorial(enteredNumber, enteredNumber);
+		System.out.format("%d!! = %d", enteredNumber, factorialResult);	 
+	}
+	//takes in the calculated total and the last number multiplied
+	//acts recursively until it returns the output
+	public static int doubleFactorial(int total, int index) {  
+		
+		//debug info
+		//System.out.format("total %d index %d \n", total, index);
+		 
+		//gets the next number to multiply
+		int newIndex = index - 2;
+		
+		if (newIndex < 1) {
+			//no more multiplication needed
+			return total;
+		} else {
+			//update the total and keep going recursively
+			int newTotal = total * newIndex;
+			return doubleFactorial(newTotal, newIndex);
+		}
+	}
+    //helper function since my user input format is so consistent
+    public static int promptInt(String message) {
+    	int input = 0;
+    	String errorMsg = "Error: That is not an integer. Please enter a valid number with no decimal component.";
+
+    	try {
+	    	System.out.format("%s \n>>", message);
+	    	input = userinput.nextInt();
+	    	
+	    	userinput.nextLine();
+	    	return input;
+    	} catch (Exception e) {
+	    	System.out.println(errorMsg);
+	    	System.out.println("");
+	    	
+			userinput.nextLine();
+    	}
+    	
+    	while (true) {
+    		try {
+		    	System.out.format("%s \n>>", message);
+		    	input = userinput.nextInt();
+		    	
+		    	userinput.nextLine();
+		    	return input;
+    		} catch (Exception e2) { 
+		    	System.out.println(errorMsg);
+		    	System.out.println("");
+		    	
+		    	userinput.nextLine();
+		    	continue;
+    		}
+    	}
+
+    }
+}

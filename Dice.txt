@@ -1,0 +1,27 @@
+package my_project.programs;
+import java.util.Scanner;
+
+public class Dice {
+    static Scanner userinput = new Scanner(System.in);
+    public static void dice() {
+
+    	String exit = "";
+    	while (!exit.equals("exit")) {
+    		int die1 = (int)Math.floor(Math.random() * 6) + 1;
+    		int die2 = (int)Math.floor(Math.random() * 6) + 1;
+    		
+        	System.out.println("Random dice results:");
+        	System.out.format("🎲%d + 🎲%d = %d\n", die1, die2, (die1 + die2));
+        	
+        	System.out.println("");
+        	
+        	System.out.print("Type \"exit\" to quit, or anything else to continue rolling. \n>>");
+        	exit = userinput.nextLine();
+        	exit = exit.toLowerCase();
+        	
+        	System.out.println("");
+    	}
+    	
+    	System.out.println("Goodbye!");
+    }
+}

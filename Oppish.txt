@@ -1,0 +1,69 @@
+package my_project.programs;
+import java.util.Scanner;
+
+public class Oppish {
+    static Scanner userinput = new Scanner(System.in);
+    public static void oppish() {
+    	
+    	System.out.print("Please enter an English sentence to translate to Oppish: \n>>");
+    	String englishSentence = userinput.nextLine();
+    	
+    	System.out.print("\nOppish: ");
+    	
+    	//iterate over every character except the last one (which never needs "opp" after it)
+    	for (int character = 0; character < englishSentence.length()-1; character++) {
+    		//test if this character is a consonant
+    		int currentCharacter = (int)englishSentence.charAt(character);
+    		boolean currentCharacterIsConsonant = detectConsonant(currentCharacter);
+    		
+    		//test if the next character is a consonant
+    		int nextCharacter = (int)englishSentence.charAt(character+1);
+    		boolean nextCharacterIsConsonant = detectConsonant(nextCharacter);
+    		
+    		//test if the next character is a letter
+    		//used to check reliably if it's the end of a word
+    		boolean nextCharacterIsLetter = (
+    				(nextCharacter >= 65 && nextCharacter <= 90) || //in the range a-z
+    				(nextCharacter >= 97 && nextCharacter <= 122)   //in the range A-Z
+    		);
+
+    		//print this character
+			System.out.print((char)currentCharacter);
+			
+    		if (                                   //if
+    				currentCharacterIsConsonant    //this character is a consonant...
+    				&& !nextCharacterIsConsonant   //and the next one isn't...
+    				&& nextCharacterIsLetter       //and it isn't the end of a word...
+    		) { System.out.print("opp"); }         //add "opp"
+    	}
+    	
+    	//just print the last character separately
+		System.out.print(englishSentence.charAt(englishSentence.length()-1));
+		System.out.print("\n");
+    	
+    }
+	//since this needs to be run twice, decided to look up function syntax in java
+	//normally try not to jump ahead, but the logic is the same either way
+	static boolean detectConsonant(int character) {
+		
+		//my complicated way of determining whether a character is a consonant
+		//by detecting if it is between two vowels (with Z as an exception)
+		//thereby excluding vowels and every other ASCII character
+		
+		if (character > 90) {
+			character = character - 32; //converts lower-case to upper-case for simplicity
+		}
+		
+		boolean isConsonant = (
+				(character > 65 && character < 69) ||   //between A-E
+				(character > 69 && character < 73) ||   //between E-I
+				(character > 73 && character < 79) ||   //between I-O
+				(character > 79 && character < 85) ||   //between O-U
+				(character > 85 && character < 89) ||   //between U-Y
+				(character == 90)                       //is Z
+		);
+		
+		return isConsonant;
+		
+	}
+}

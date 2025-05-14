@@ -1,0 +1,139 @@
+Welcome to the ULTIMATE COMPUTER!
+Here are your options:
+
+------------------------------------------------
+[1] Display [2] Text Art   [3] Encouragement     
+[4] Oppish  [5] Calculator [6] Binary Calculator 
+[7] Dice    [8] Fibonacci  [9] Double Factorial  
+------------------------------------------------
+[0] Quit
+ 
+>>5
+
+Please provide two numbers to do calculations on. 
+These numbers must be positive but can have a decimal component.
+
+Enter your first number (x): 
+>>10
+Enter your second number (y): 
+>>5
+
+x + y = 15.00 
+x * y = 50.00 
+x / y = 2.00 
+x ^ y = 100000.00 
+log y(x) = 1.43 
+
+The program has ended, press [Enter] to return to the menu. 
+>>
+
+------------------------------------------------
+[1] Display [2] Text Art   [3] Encouragement     
+[4] Oppish  [5] Calculator [6] Binary Calculator 
+[7] Dice    [8] Fibonacci  [9] Double Factorial  
+------------------------------------------------
+[0] Quit
+ 
+>>6
+
+Please provide two binary numbers to do calculations on. 
+These numbers must be between 0000000000000000 and 1111111111111111.
+
+Enter your first binary number (x): 
+>>1010
+Enter your second binary number (y): 
+>>0101
+
+x + y = 1111 
+x - y = 101 
+x * y = 110010 
+x / y = 10 
+
+The program has ended, press [Enter] to return to the menu. 
+>>
+
+------------------------------------------------
+[1] Display [2] Text Art   [3] Encouragement     
+[4] Oppish  [5] Calculator [6] Binary Calculator 
+[7] Dice    [8] Fibonacci  [9] Double Factorial  
+------------------------------------------------
+[0] Quit
+ 
+>>7
+
+Random dice results:
+🎲1 + 🎲3 = 4
+
+Type "exit" to quit, or anything else to continue rolling. 
+>>
+
+Random dice results:
+🎲1 + 🎲1 = 2
+
+Type "exit" to quit, or anything else to continue rolling. 
+>>
+
+Random dice results:
+🎲6 + 🎲3 = 9
+
+Type "exit" to quit, or anything else to continue rolling. 
+>>exit
+
+Goodbye!
+
+The program has ended, press [Enter] to return to the menu. 
+>>
+
+------------------------------------------------
+[1] Display [2] Text Art   [3] Encouragement     
+[4] Oppish  [5] Calculator [6] Binary Calculator 
+[7] Dice    [8] Fibonacci  [9] Double Factorial  
+------------------------------------------------
+[0] Quit
+ 
+>>8
+
+This program generates entries in the Fibonacci Sequence.
+How many entries do you want? 
+Please enter a number between 1 and 32. 
+>>7
+
+1
+1
+2
+3
+5
+8
+13
+
+The program has ended, press [Enter] to return to the menu. 
+>>
+
+------------------------------------------------
+[1] Display [2] Text Art   [3] Encouragement     
+[4] Oppish  [5] Calculator [6] Binary Calculator 
+[7] Dice    [8] Fibonacci  [9] Double Factorial  
+------------------------------------------------
+[0] Quit
+ 
+>>9
+
+Welcome to the Double Factorial Calculator!
+
+Enter an integer (1-19) to calculate the double factorial of. 
+>>6
+
+6!! = 48
+The program has ended, press [Enter] to return to the menu. 
+>>
+
+------------------------------------------------
+[1] Display [2] Text Art   [3] Encouragement     
+[4] Oppish  [5] Calculator [6] Binary Calculator 
+[7] Dice    [8] Fibonacci  [9] Double Factorial  
+------------------------------------------------
+[0] Quit
+ 
+>>0
+
+Thank you for using the ULTIMATE COMPUTER!

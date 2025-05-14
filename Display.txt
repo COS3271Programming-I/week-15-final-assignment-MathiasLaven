@@ -1,0 +1,15 @@
+package my_project.programs;
+
+public class Display {
+	public static void display() {
+		
+		System.out.println("My name is Mathias Laven.");
+		System.out.println("Here is one of my favorite proverbs:");
+		System.out.println("");
+		System.out.println("\tGive a man a fish, and he'll eat for a day.");
+		System.out.println("\tTeach a man to fish, and he'll eat for a lifetime.");
+		System.out.println("");
+		System.out.format("%20s", "~Unknown\n");
+
+	}
+}

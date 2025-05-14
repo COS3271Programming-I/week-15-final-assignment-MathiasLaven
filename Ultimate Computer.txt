@@ -1,0 +1,182 @@
+package my_project;
+import java.util.Scanner;
+
+import static my_project.programs.Display.display;
+import static my_project.programs.TextArt.textArt;
+import static my_project.programs.Calculator.calculator;
+import static my_project.programs.BinaryCalculator.binaryCalculator;
+import static my_project.programs.Encouragement.encouragement;
+import static my_project.programs.Dice.dice;
+import static my_project.programs.Oppish.oppish;
+import static my_project.programs.Fibonacci.fibonacci;
+import static my_project.programs.DoubleFactorial.doubleFactorial;
+
+class UltimateComputer {
+	static Scanner userinput = new Scanner(System.in);
+	public static void main (String[] args){  
+		System.out.println("Welcome to the ULTIMATE COMPUTER!");
+		System.out.println("Here are your options:");
+		System.out.println("");
+		
+		//get options for use in the menu
+		//IMPORTANT NOTE: reordered since the last submission to fit the directions order
+		//(which, to be fair, leads to a better-looking menu)
+		String[] userOptions = {
+				"Display", 
+				"Text Art", 
+				"Encouragement", 
+				"Oppish",
+				"Calculator", 
+				"Binary Calculator", 
+				"Dice", 
+				"Fibonacci",
+				"Double Factorial"
+		};
+		
+		//align options to columns
+		String[] alignedUserOptions = alignOptions(userOptions);
+		
+		//loop as user goes through the programs, will break when they choose to exit
+		while (true) {
+			try {
+				//display them
+				displayOptions(alignedUserOptions);
+				String userChoice = promptString("");
+				
+				//quit if the user opts to quit
+				if (userChoice.equals("0")) {
+					break;
+				} else {
+					//if the user doesn't quit, give them their requested program
+					System.out.println("");
+					chooseProgram(userChoice);
+				}
+				
+			} catch (Exception e) {
+				//not really sure how this would happen, but you can't be too safe
+				System.out.println("Error: An unknown error occured. Taking you back to the menu...");
+			}
+			
+			System.out.println("");
+		}
+		
+		//program end
+		//IMPORTANT NOTE: updated since last submission to be more clear
+		//since some programs use "Goodbye!" and i want to distinguish that from the main program end
+		System.out.println("");
+		System.out.println("Thank you for using the ULTIMATE COMPUTER!");
+	}
+	//function to take in user input and call the program function they request
+    public static void chooseProgram(String choice) {
+    	//swapped this out for a switch statement because it's way better than an if for this
+    	switch (choice) {
+			//IMPORTANT NOTE: reordered because the menu was also reordered
+    		case "1":
+    			display();
+    			break;
+    		case "2":
+    			textArt();
+    			break;
+    		case "3":
+    			encouragement();
+    			break;
+    		case "4":
+    			oppish();
+    			break;
+    		case "5":
+    			calculator();
+    			break;
+    		case "6":
+    			binaryCalculator();
+    			break;
+    		case "7":
+    			dice();
+    			break;
+    		case "8":
+    			fibonacci();
+    			break;
+    		case "9":
+    			doubleFactorial();
+    			break;
+    		default:
+    			//0 was handled earlier, so any other entries don't have a program
+    			System.out.println("Error: Your entry is invalid. Please enter a number corresponding to an available program.");
+    	}
+		
+		System.out.println("");
+		promptString("The program has ended, press [Enter] to return to the menu.");
+    }
+    //takes in options list, aligns them to columns
+	public static String[] alignOptions(String[] options){
+		String[] alignedOptions = options;
+		
+		for (int i = 0; i < 3; i++) {
+			String topRow = options[i];
+			String middleRow = options[i+3];
+			String bottomRow = options[i+6];
+			
+			int columnWidth = topRow.length();
+			if (middleRow.length() > columnWidth) {columnWidth = middleRow.length();}
+			if (bottomRow.length() > columnWidth) {columnWidth = bottomRow.length();}
+			
+			int topRowSpaces = columnWidth - topRow.length();
+			int middleRowSpaces = columnWidth - middleRow.length();
+			int bottomRowSpaces = columnWidth - bottomRow.length();
+			
+			for (int j = 0; j < columnWidth; j++) {
+				//this slowly adds the required number of spaces,
+				//one per loop until the needed amount is reached
+				if (j < topRowSpaces) {alignedOptions[i] = alignedOptions[i] + " ";}
+				if (j < middleRowSpaces) {alignedOptions[i+3] = alignedOptions[i+3] + " ";}
+				if (j < bottomRowSpaces) {alignedOptions[i+6] = alignedOptions[i+6] + " ";}
+			}
+			
+		}
+		
+		return alignedOptions;
+		
+	}
+	//prints pre-aligned options list
+	public static void displayOptions(String[] options){
+		
+		//get the width of the menu, accounting for spacers and number selections
+		int menuWidth = options[0].length() + options[1].length() + options[2].length() + 4*3 + 2;
+		
+		//top bar
+		for (int i = 0; i < menuWidth; i++) {
+			System.out.print("-");
+		}
+		
+		System.out.print("\n");
+		
+		//loop in groups of three so each row is accounted for at once
+		for (int i = 3; i < 10; i += 3) {
+			//i works as the visual display (1-9), whereas index is the array representation (0-8)
+			int index = i - 1;
+			
+			//loop over each item in the row and print
+			for (int j = 2; j > -1; j--) {
+				System.out.format("[%d] %s ", i-j, options[index-j]);
+
+			}
+			
+			System.out.print("\n");
+
+		}
+		
+		//bottom bar
+		for (int i = 0; i < menuWidth; i++) {
+			System.out.print("-");
+		}
+		
+		//display quit option
+		System.out.print("\n");
+		System.out.print("[0] Quit\n");
+
+	}
+    //helper function since my user input format is so consistent
+    public static String promptString(String message) {
+    	System.out.format("%s \n>>", message);
+    	return userinput.nextLine();
+    }
+}
